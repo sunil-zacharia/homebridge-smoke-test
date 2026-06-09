@@ -1,4 +1,4 @@
-import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, Service, Characteristic } from 'homebridge';
+import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, Service, Characteristic, CharacteristicValue } from 'homebridge';
 
 /**
  * HomebridgeSmokeTestPlatform
@@ -145,9 +145,9 @@ export class SmokeTestSwitchAccessory {
    * Handle "SET" requests from HomeKit
    * These are sent when the user changes the state of an accessory, for example, turning on a Light bulb.
    */
-  async setOn(value: boolean) {
+  async setOn(value: CharacteristicValue) {
     // implement your own code to turn your device on/off
-    this.switchState = value;
+    this.switchState = value as boolean;
 
     this.platform.log.debug('Set Characteristic On ->', value);
   }
